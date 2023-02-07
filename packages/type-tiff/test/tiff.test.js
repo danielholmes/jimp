@@ -1,12 +1,14 @@
 import { Jimp, getTestDir } from "@jimp/test-utils";
 import configure from "@jimp/custom";
-import expect from "@storybook/expect";
-
+import expectImport from "@storybook/expect";
+import * as url from "url";
 import tiff from "../src";
 
+const expect = expectImport.default;
 const jimp = configure({ types: [tiff] }, Jimp);
 
 describe("TIFF", () => {
+  const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
   const imagesDir = getTestDir(__dirname) + "/images";
 
   it("load TIFF", async () => {

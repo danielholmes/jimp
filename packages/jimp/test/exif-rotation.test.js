@@ -1,9 +1,12 @@
 import { Jimp, getTestDir } from "@jimp/test-utils";
-import expect from "@storybook/expect";
-
+import expectImport from "@storybook/expect";
+import * as url from "url";
 import configure from "@jimp/custom";
 
+const expect = expectImport.default;
+
 const jimp = configure({ plugins: [] }, Jimp);
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 describe("EXIF orientation", () => {
   for (let orientation = 1; orientation <= 8; orientation++) {

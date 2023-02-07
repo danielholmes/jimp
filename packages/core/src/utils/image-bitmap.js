@@ -1,18 +1,17 @@
-import FileType from "file-type";
-
 import EXIFParser from "exif-parser";
 import { throwError } from "@jimp/utils";
+import { fileTypeFromBuffer } from "file-type/core";
 
 import * as constants from "../constants";
 import * as MIME from "./mime";
 import promisify from "./promisify";
 
 async function getMIMEFromBuffer(buffer, path) {
-  const fileTypeFromBuffer = await FileType.fromBuffer(buffer);
+  const fileType = await fileTypeFromBuffer(buffer);
 
-  if (fileTypeFromBuffer) {
+  if (fileType) {
     // If fileType returns something for buffer, then return the mime given
-    return fileTypeFromBuffer.mime;
+    return fileType.mime;
   }
 
   if (path) {

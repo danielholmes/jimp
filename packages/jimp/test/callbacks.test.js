@@ -1,9 +1,6 @@
-import { Jimp, mkJGD, hasOwnProp } from "@jimp/test-utils";
-import expect from "@storybook/expect";
-
+import { expectToBeJGD, Jimp, mkJGD, hasOwnProp } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import plugins from "@jimp/plugins";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [plugins] }, Jimp);
 

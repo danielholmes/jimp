@@ -1,9 +1,13 @@
 import { Jimp, mkJGD, getTestDir } from "@jimp/test-utils";
 import configure from "@jimp/custom";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+import * as url from "url";
 
 import circle from "../src";
 
+const expect = expectImport.default;
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const jimp = configure({ plugins: [circle] }, Jimp);
 
 describe("Circle", () => {

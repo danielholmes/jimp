@@ -1,5 +1,7 @@
 import { Jimp, mkJGD } from "@jimp/test-utils";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+
+const expect = expectImport.default;
 
 describe("Compare image difference", () => {
   let imgs = [

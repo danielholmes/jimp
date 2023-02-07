@@ -1,8 +1,7 @@
-import { Jimp, mkJGD } from "@jimp/test-utils";
+import { Jimp, mkJGD, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 
 import mask from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [mask] }, Jimp);
 

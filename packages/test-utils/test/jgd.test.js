@@ -1,5 +1,7 @@
 import { Jimp, donutJGD } from "../src";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+
+const expect = expectImport.default;
 
 const donut = donutJGD(
   // RRGGBBAA

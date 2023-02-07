@@ -1,11 +1,13 @@
 import fs from "fs";
-import expect from "@storybook/expect";
-
+import * as url from "url";
+import expectImport from "@storybook/expect";
 import { Jimp, getTestDir } from "@jimp/test-utils";
-
 import configure from "@jimp/custom";
 import plugins from "@jimp/plugins";
 
+const expect = expectImport.default;
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const jimp = configure({ plugins: [plugins] }, Jimp);
 
 // TODO: Figure out why we need to write to file to get equal buffers

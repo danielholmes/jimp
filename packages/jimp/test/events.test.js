@@ -1,10 +1,18 @@
-import { Jimp as jimp, mkJGD, getTestDir } from "@jimp/test-utils";
+import {
+  Jimp as jimp,
+  mkJGD,
+  getTestDir,
+  expectToBeJGD,
+} from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import plugins from "@jimp/plugins";
-import expect from "@storybook/expect";
-import { expectToBeJGD } from "@jimp/test-utils/src";
+import expectImport from "@storybook/expect";
+import * as url from "url";
+
+const expect = expectImport.default;
 
 const Jimp = configure({ plugins: [plugins] }, jimp);
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 describe("Events", () => {
   describe("on initialized", () => {

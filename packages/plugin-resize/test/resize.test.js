@@ -1,8 +1,7 @@
-import { Jimp, mkJGD, hashForEach } from "@jimp/test-utils";
+import { Jimp, mkJGD, hashForEach, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 
 import resize from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [resize] }, Jimp);
 

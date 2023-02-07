@@ -1,11 +1,14 @@
-import { Jimp, mkJGD, getTestDir } from "@jimp/test-utils";
+import { Jimp, mkJGD, getTestDir, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import types from "@jimp/types";
-import expect from "@storybook/expect";
+import * as url from "url";
+import expectImport from "@storybook/expect";
 
 import color from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
+const expect = expectImport.default;
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const jimp = configure({ types: [types], plugins: [color] }, Jimp);
 
 describe("Convolution", function () {

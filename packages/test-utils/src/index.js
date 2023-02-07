@@ -1,7 +1,7 @@
-import expect from "@storybook/expect";
 import equal from "fast-deep-equal";
+import Jimp from "./jgd-wrapper";
 
-export const Jimp = require("./jgd-wrapper");
+export { Jimp };
 
 export function hasOwnProp(obj, key) {
   return Object.prototype.hasOwnProperty.call(obj, key);

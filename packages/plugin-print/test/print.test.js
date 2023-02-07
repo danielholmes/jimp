@@ -3,11 +3,16 @@
 import { Jimp, getTestDir, hasOwnProp } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import blit from "@jimp/plugin-blit";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+import * as url from "url";
+import * as path from "path";
 
 import print from "../src";
 
+const expect = expectImport.default;
+
 const jimp = configure({ plugins: [print, blit] }, Jimp);
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 async function createTextImage(
   width,

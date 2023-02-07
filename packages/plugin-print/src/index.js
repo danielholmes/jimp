@@ -1,4 +1,5 @@
 import Path from "path";
+// import * as url from 'url';
 import bMFont from "load-bmfont";
 import { isNodePattern, throwError } from "@jimp/utils";
 import { measureText, measureTextHeight, splitLines } from "./measure-text";
@@ -65,7 +66,26 @@ function loadPages(Jimp, dir, pages) {
   return Promise.all(newPages);
 }
 
-const dir = process.env.DIRNAME || `${__dirname}/../`;
+const dir = (() => {
+  if (process.env.DIRNAME) {
+    return process.env.DIRNAME;
+  }
+
+  if (typeof __dirname !== "undefined") {
+    return `${__dirname}/../`;
+  }
+
+  if (typeof import.meta !== "undefined") {
+    const baseDir = import.meta.url
+      .replace("file://", "")
+      .split("/")
+      .slice(0, -1)
+      .join("/");
+    return `${baseDir}/../`;
+  }
+
+  return "../";
+})();
 
 export default () => ({
   constants: {

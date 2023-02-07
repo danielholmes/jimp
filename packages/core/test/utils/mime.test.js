@@ -1,5 +1,7 @@
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
 import { getType, getExtension, addType } from "../../src/utils/mime";
+
+const expect = expectImport.default;
 
 describe("Mime", () => {
   before(() => {

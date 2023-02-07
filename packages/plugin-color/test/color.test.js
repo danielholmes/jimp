@@ -1,8 +1,7 @@
-import { Jimp, donutJGD } from "@jimp/test-utils";
+import { Jimp, donutJGD, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 
 import color from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [color] }, Jimp);
 

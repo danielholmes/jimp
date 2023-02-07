@@ -1,7 +1,11 @@
 import fs from "fs";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
 import { Jimp, getTestDir } from "@jimp/test-utils";
+import * as url from "url";
 
+const expect = expectImport.default;
+
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const imagesDir = getTestDir(__dirname) + "/images";
 
 describe("Async functions", () => {

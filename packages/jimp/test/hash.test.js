@@ -2,10 +2,14 @@ import { Jimp, getTestDir } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import types from "@jimp/types";
 import plugins from "@jimp/plugins";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+import * as url from "url";
+
+const expect = expectImport.default;
 
 const jimp = configure({ types: [types], plugins: [plugins] }, Jimp);
 
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const imagesDir = getTestDir(__dirname) + "/images";
 
 describe("hash", () => {

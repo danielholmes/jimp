@@ -1,12 +1,14 @@
-import { Jimp, mkJGD, getTestDir } from "@jimp/test-utils";
+import { Jimp, mkJGD, getTestDir, expectToBeJGD } from "@jimp/test-utils";
 import jpeg from "@jimp/jpeg";
 import configure from "@jimp/custom";
-import expect from "@storybook/expect";
-
+import expectImport from "@storybook/expect";
+import * as url from "url";
 import blit from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
+
+const expect = expectImport.default;
 
 const jimp = configure({ types: [jpeg], plugins: [blit] }, Jimp);
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const testDir = getTestDir(__dirname);
 
 describe("Blit over image", function () {

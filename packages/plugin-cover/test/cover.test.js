@@ -1,11 +1,10 @@
-import { Jimp, mkJGD, hasOwnProp } from "@jimp/test-utils";
+import { Jimp, mkJGD, hasOwnProp, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import crop from "@jimp/plugin-crop";
 import scale from "@jimp/plugin-scale";
 import resize from "@jimp/plugin-resize";
 
 import cover from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [resize, scale, crop, cover] }, Jimp);
 

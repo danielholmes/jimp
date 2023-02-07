@@ -1,9 +1,9 @@
-import webpack from "webpack";
-import path from "path";
+const webpack = require("webpack");
+const path = require("path");
 
 const isProd = process.env.NODE_ENV === "production";
 
-export default {
+module.exports = {
   mode: isProd ? "production" : "development",
   devtool: isProd ? "source-map" : "eval-cheap-module-source-map",
   entry: "./src/index.js",
@@ -17,6 +17,16 @@ export default {
       fs: false,
     },
   },
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false, // disable the behaviour
+        },
+      },
+    ],
+  },
   plugins: [
     new webpack.DefinePlugin({
       "process.browser": JSON.stringify("true"),
@@ -29,9 +39,24 @@ export default {
     new webpack.ProvidePlugin({
       Buffer: ["buffer", "Buffer"],
     }),
+    // Support new node: prefixed packages
+    new webpack.NormalModuleReplacementPlugin(/node:/, (resource) => {
+      const mod = resource.request.replace(/^node:/, "");
+      switch (mod) {
+        case "buffer":
+          resource.request = "buffer";
+          break;
+        case "stream":
+          resource.request = "readable-stream";
+          break;
+        default:
+            throw new Error(`Not found ${mod}`);
+      }
+    }),
   ],
   output: {
     path: path.join(__dirname, "browser/lib"),
     filename: "jimp.js",
   },
-} as webpack.Configuration;
+}; 
+/* as webpack.Configuration */

@@ -1,5 +1,7 @@
 import { Jimp } from "@jimp/test-utils";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+
+const expect = expectImport.default;
 
 // Convert [0..1] float to a percent value with only one decimal.
 const pct = (n) => ((n * 1000) << 0) / 10;

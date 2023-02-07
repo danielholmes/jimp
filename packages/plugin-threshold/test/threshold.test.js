@@ -3,14 +3,18 @@ import configure from "@jimp/custom";
 import jpeg from "@jimp/jpeg";
 import color from "@jimp/plugin-color";
 import resize from "@jimp/plugin-resize";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+import * as url from "url";
 
 import threshold from "../src";
+
+const expect = expectImport.default;
 
 const jimp = configure(
   { types: [jpeg], plugins: [threshold, color, resize] },
   Jimp
 );
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 describe("Threshold", function () {
   this.timeout(15000);

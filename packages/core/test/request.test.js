@@ -1,9 +1,12 @@
 import { Jimp as jimp, getTestDir } from "@jimp/test-utils";
-import expect from "@storybook/expect";
+import expectImport from "@storybook/expect";
+import * as fs from "fs";
+import * as http from "http";
+import * as url from "url";
 
-const fs = require("fs");
-const http = require("http");
+const expect = expectImport.default;
 
+const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 const imagesDir = getTestDir(__dirname) + "/images";
 
 const httpHandler = (req, res) => {

@@ -1,11 +1,10 @@
-import { Jimp, mkJGD, hasOwnProp } from "@jimp/test-utils";
+import { Jimp, mkJGD, hasOwnProp, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import blit from "@jimp/plugin-blit";
 import resize from "@jimp/plugin-resize";
 import scale from "@jimp/plugin-scale";
 
 import contain from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [scale, resize, blit, contain] }, Jimp);
 

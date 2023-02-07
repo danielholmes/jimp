@@ -1,11 +1,10 @@
-import { Jimp, mkJGD } from "@jimp/test-utils";
+import { Jimp, mkJGD, expectToBeJGD } from "@jimp/test-utils";
 import configure from "@jimp/custom";
 import blit from "@jimp/plugin-blit";
 import crop from "@jimp/plugin-crop";
 import resize from "@jimp/plugin-resize";
 
 import rotate from "../src";
-import { expectToBeJGD } from "@jimp/test-utils/src";
 
 const jimp = configure({ plugins: [rotate, blit, crop, resize] }, Jimp);
 
